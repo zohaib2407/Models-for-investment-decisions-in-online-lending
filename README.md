@@ -51,6 +51,62 @@ Profit Curve - The profit curves at different cut-off values are shown in the gr
 
 ![image](https://user-images.githubusercontent.com/35283246/143790956-3b196c6e-698d-4cc4-a265-2740469d9b3c.png)
 
+**Models to Identify best returns**
+
+In the next part we will develop models to provide best returns. 
+We developed three different models : GLM, Random Forest and GBM. 
+
+Linear Model using GLM
+
+Before building linear regression model, we’ve first looked at the correlation between the different numeric variables in the dataset to check for multicollinearity. We have first built the correlation plot between all the pairs of numerical variables.
+
+![image](https://user-images.githubusercontent.com/35283246/143791105-e8943198-a854-4b30-a8fa-5e4e96d5eeb1.png)
+
+ We’ve further checked for the correlation between variables below a certain threshold. For implementing the threshold we’ve taken the cut-off value of 0.6. 
+ 
+ ![image](https://user-images.githubusercontent.com/35283246/143791119-a031b7fe-fb1f-44a5-8a1f-2273a76f3489.png)
+ 
+ From the above plot, we looked at the top ten variables having high correlation with the predictor variable i.e. ‘annual return’.
+
+Next, we built two different linear models. One with lasso regularization and the other with Ridge regularization.
+We experimented with different value of parameters, for both the models. After evaluating both the models, we picked the best one. 
+
+**Lasso Regularization**
+
+For lasso regularization, we used the value of alpha parameter as 1. We trained our model on training set and then checked the mean-squared error on cross validation samples for varying values of the regularization parameter (lambda).
+
+![image](https://user-images.githubusercontent.com/35283246/143791144-283bde54-905d-4d9e-9618-e825ed81b763.png)
+
+
+We then built the model with the values of lambda i.e. ‘lambda min’ and ‘lambda 1 STD’. After building the two models, we evaluated the two lasso models on our test data. 
+
+We found the best model to be one with lambda value of ‘lambda 1 STD’ having a R-Squared value of 73.89%.  This means that around 74% of our variations is explained by our linear model. 
+
+**Ridge Regression**
+
+We also built a linear model with ridge regularization. For ridge regression, the value of our parameter, alpha would be 0. After building the model, we then looked at cross validation error for varying values of the regularization parameter i.e. lambda. 
+
+![image](https://user-images.githubusercontent.com/35283246/143791154-0b8c1dfb-d383-4213-8396-4ba03b8bfc32.png)
+
+We then evaluated our ridge regression model on our test data for lambda value that gives the minimum cross validation error, i.e., lambda.min.
+
+The ridge regression model gave us a R-Squared value of 73.26% which is not substantially different from our lasso model. However, the lasso model seems to perform slightly better. Also, the lasso model has the inherent ability of variable selection. Hence, we chose final model to be lasso. 
+
+For our final model, we built the lasso model. We then checked the QQ plot of some variables to see if the variables selected by default by the lasso model is in fact significant. Below is the QQ plot of interest rate which is highly correlated with our response variable and it is visible from the plot that interest rate is normally distributed.
+
+![image](https://user-images.githubusercontent.com/35283246/143791171-2c7b114f-4ee1-4e9c-a54c-ec62acb7fbc0.png)
+
+Also, we checked the L1 normalization plot of the lasso model to see how different variables have been handles by our lasso model.
+
+![image](https://user-images.githubusercontent.com/35283246/143791177-1dbee382-fa49-449d-99bb-85cd3cc4c0ad.png)
+
+Next we built Random forest and GBM and did compafrative evaluation. 
+
+
+
+
+
+
 
 
 
