@@ -1,6 +1,6 @@
 ---
 title: "Assignment_2_Data_Mining_IDS_572"
-author: "Zohaib Sheikh, Shubham Khode,  Anirudha Balkrishna"
+author: "Zohaib Sheikh"
 date: "10/23/2021"
 output: html_document
 
