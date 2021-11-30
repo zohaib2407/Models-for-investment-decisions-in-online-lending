@@ -23,7 +23,7 @@ Then we evaluated our model on the unseen data. We used AUC, ROC and the confusi
 
 However, a better option than manually tweaking hyperparameters one at a time is to perform a grid search which iterates over every combination of hyperparameter values and allows us to assess which combination tends to perform well. To perform a manual grid search, first we want to construct our grid of hyperparameter combinations. We’re going to search across 6 models with varying learning rates and tree depth. 
 
-After about 30 minutes of training time our grid search ends. We see a few important results pop out. First, our top model has better performance than our previously fitted model above, with lower RMSE.
+After about 30 minutes of training time, our grid search ends. We see a few important results pop out. First, our top model has better performance than our previously fitted model above, with lower RMSE.
 
 One possible option is to build a GBM model with 3000 trees, a shrinkage of 0.001 & interaction depth of 5. When we examine the loss function, the loss is smooth, but the number of trees can be further reduced.
 ![image](https://user-images.githubusercontent.com/35283246/143790895-b0dff3f1-a82b-42c6-8b43-8cd9a321674d.png)
